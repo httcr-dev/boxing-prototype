@@ -1,50 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boxen - Escola de Boxe & Artes Marciais</title>
+    <title>Home – Boxen</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ==========================================
-           RESET E CONFIGURAÇÕES GERAIS
-           ========================================== */
+        /* ==========================================================================
+           RESET & CONFIGURAÇÕES BASE (Padrão Elementor/Boxen)
+           ========================================================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0b0b0b;
-            color: #ffffff;
-            overflow-x: hidden;
+        :root {
+            --primary-color: #FF3E3E; /* Vermelho Boxen */
+            --bg-dark: #0A0A0A;
+            --bg-card: #121212;
+            --text-light: #FFFFFF;
+            --text-gray: #A6A6A6;
+            --font-title: 'Oswald', sans-serif;
+            --font-body: 'Jost', sans-serif;
         }
-        h1, h2, h3, .btn-bold {
-            font-family: 'Oswald', sans-serif;
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4, .btn-style {
+            font-family: var(--font-title);
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
         a {
             text-decoration: none;
             color: inherit;
+            transition: all 0.3s ease;
         }
 
-        /* PALETE DE CORES IDENTICA AO TEMA BOXEN */
-        :root {
-            --primary-color: #ff3e3e; /* Vermelho vibrante de combate */
-            --bg-dark: #0b0b0b;
-            --bg-card: #141414;      /* Cinza escuro para contraste */
-            --text-light: #ffffff;
-            --text-gray: #a0a0a0;
-        }
-
-        /* ==========================================
-           BARRA DE NAVEGAÇÃO (HEADER)
-           ========================================== */
+        /* ==========================================================================
+           HEADER / TOPO (Identidade Visual Integrada)
+           ========================================================================== */
         header {
             position: absolute;
             top: 0;
@@ -53,16 +57,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 8%;
-            z-index: 100;
-            background: rgba(11, 11, 11, 0.85);
-            backdrop-filter: blur(8px);
+            padding: 30px 6%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .logo {
+            font-family: var(--font-title);
             font-size: 2.2rem;
             font-weight: 700;
-            color: var(--text-light);
             letter-spacing: 2px;
         }
         .logo span {
@@ -71,252 +75,275 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 30px;
         }
         nav ul li a {
+            font-size: 0.95rem;
             font-weight: 500;
-            font-size: 1rem;
             text-transform: uppercase;
-            transition: color 0.3s ease;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         nav ul li a:hover {
             color: var(--primary-color);
         }
-        .btn-nav {
+        .header-action .btn-join {
             background-color: var(--primary-color);
-            padding: 12px 28px;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: background 0.3s ease;
+            padding: 14px 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 0px; /* Estilo bloco quadrado do tema */
+            display: inline-block;
         }
-        .btn-nav:hover {
-            background-color: #e03232;
+        .header-action .btn-join:hover {
+            background-color: #E03232;
+            transform: translateY(-2px);
         }
 
-        /* ==========================================
-           SECÇÃO HERO (IMAGEM PRINCIPAL)
-           ========================================== */
-        .hero {
+        /* ==========================================================================
+           HERO SECTION (Abertura de Alto Impacto)
+           ========================================================================== */
+        .hero-section {
+            position: relative;
             height: 100vh;
-            /* Gradiente escuro sobreposto à imagem para legibilidade do texto */
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(11,11,11,1)),
-                        url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=1920') no-repeat center center/cover;
+            min-height: 750px;
             display: flex;
             align-items: center;
-            padding: 0 8%;
-            position: relative;
+            padding: 0 6%;
+            background: linear-gradient(90deg, rgba(10,10,10,0.85) 30%, rgba(10,10,10,0.4) 100%),
+                        url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=1920') no-repeat center center/cover;
         }
         .hero-content {
-            max-width: 700px;
-            margin-top: 60px;
+            max-width: 750px;
+            z-index: 2;
         }
-        .hero-subtitle {
+        .hero-tagline {
             color: var(--primary-color);
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero-tagline::before {
+            content: '';
+            width: 25px;
+            height: 2px;
+            background-color: var(--primary-color);
             display: inline-block;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 12px;
-            font-family: 'Oswald', sans-serif;
         }
-        .hero h1 {
-            font-size: 5rem;
-            line-height: 1.05;
-            margin-bottom: 25px;
+        .hero-section h1 {
+            font-size: 5.5rem;
             font-weight: 700;
+            line-height: 0.95;
+            margin-bottom: 25px;
         }
-        .hero p {
+        .hero-section p {
             color: var(--text-gray);
-            font-size: 1.15rem;
-            margin-bottom: 35px;
-            line-height: 1.7;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 600px;
         }
-        .cta-buttons {
+        .hero-buttons {
             display: flex;
             gap: 20px;
         }
-        .btn-main {
+        .btn-prime {
             background-color: var(--primary-color);
-            padding: 16px 38px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: 0.3s ease;
+            padding: 18px 40px;
+            font-size: 1rem;
+            font-weight: 600;
         }
-        .btn-main:hover {
-            background-color: #e03232;
-            box-shadow: 0 0 20px rgba(255, 62, 62, 0.4);
+        .btn-prime:hover {
+            background-color: #E03232;
+            box-shadow: 0 8px 20px rgba(255, 62, 62, 0.3);
         }
-        .btn-secondary {
+        .btn-outline {
             border: 2px solid var(--text-light);
-            padding: 14px 36px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: 0.3s ease;
+            padding: 16px 38px;
+            font-size: 1rem;
+            font-weight: 600;
         }
-        .btn-secondary:hover {
+        .btn-outline:hover {
             background-color: var(--text-light);
             color: var(--bg-dark);
         }
 
-        /* ==========================================
-           SECÇÃO DE CARACTERÍSTICAS (CARDS)
-           ========================================== */
-        .features {
-            padding: 0 8% 60px 8%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: -80px; /* Faz os blocos flutuarem sobre o Hero */
+        /* ==========================================================================
+           FEATURES (Três Blocos Sobrepostos / Info Boxes)
+           ========================================================================== */
+        .features-container {
+            padding: 0 6%;
+            margin-top: -100px;
             position: relative;
             z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
-        .feature-card {
+        .feature-box {
             background-color: var(--bg-card);
-            padding: 45px 35px;
-            border-radius: 6px;
-            border-bottom: 4px solid transparent;
-            transition: all 0.3s ease;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            padding: 50px 40px;
+            border-top: 4px solid transparent;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        .feature-card:hover {
+        .feature-box:hover {
             transform: translateY(-10px);
-            border-color: var(--primary-color);
+            border-top-color: var(--primary-color);
         }
-        .feature-icon {
-            font-size: 2.8rem;
+        .feature-box .icon {
+            font-size: 3rem;
             color: var(--primary-color);
             margin-bottom: 25px;
+            display: block;
         }
-        .feature-card h3 {
-            font-size: 1.6rem;
+        .feature-box h3 {
+            font-size: 1.7rem;
             margin-bottom: 15px;
+            font-weight: 600;
         }
-        .feature-card p {
+        .feature-box p {
             color: var(--text-gray);
             font-size: 1rem;
             line-height: 1.6;
         }
 
-        /* ==========================================
-           SECÇÃO DE CLASSES / PROGRAMAS
-           ========================================== */
-        .classes-section {
-            padding: 100px 8%;
+        /* ==========================================================================
+           SEÇÃO DE CLASSES / MODALIDADES (Grids com Zoom)
+           ========================================================================== */
+        .section-padding {
+            padding: 120px 6%;
+        }
+        .center-title {
             text-align: center;
+            margin-bottom: 60px;
         }
-        .section-title {
-            margin-bottom: 70px;
-        }
-        .section-title span {
+        .center-title .sub {
             color: var(--primary-color);
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            font-weight: bold;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 4px;
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            font-family: 'Oswald', sans-serif;
         }
-        .section-title h2 {
-            font-size: 3.5rem;
+        .center-title h2 {
+            font-size: 3.8rem;
             font-weight: 700;
         }
-        .classes-grid {
+        .classes-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
         }
-        .class-item {
+        .class-card {
             background-color: var(--bg-card);
-            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .class-media {
+            width: 100%;
+            height: 260px;
             overflow: hidden;
             position: relative;
-            text-align: left;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            transition: transform 0.3s;
         }
-        .class-img-container {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-        }
-        .class-img {
+        .class-media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(30%);
-            transition: transform 0.5s ease, filter 0.5s ease;
+            transition: transform 0.6s ease;
         }
-        .class-item:hover .class-img {
-            filter: grayscale(0%);
-            transform: scale(1.08);
+        .class-card:hover .class-media img {
+            transform: scale(1.1);
         }
-        .class-body {
-            padding: 35px;
+        .class-info {
+            padding: 40px;
         }
-        .class-body h3 {
-            font-size: 1.7rem;
-            margin-bottom: 12px;
+        .class-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
-        .class-body p {
+        .class-info p {
             color: var(--text-gray);
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 25px;
         }
-        .class-link {
+        .class-btn {
             color: var(--primary-color);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.95rem;
+            font-family: var(--font-title);
+            font-size: 1rem;
+            font-weight: 600;
             letter-spacing: 1px;
+            text-transform: uppercase;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: color 0.3s;
         }
-        .class-link:hover {
+        .class-btn:hover {
             color: var(--text-light);
         }
 
-        /* ==========================================
-           RODAPÉ (FOOTER)
-           ========================================== */
+        /* ==========================================================================
+           FOOTER / RODAPÉ (Simplificado e Limpo)
+           ========================================================================== */
         footer {
-            background-color: #060606;
-            padding: 50px 8%;
-            text-align: center;
+            background-color: #050505;
+            padding: 60px 6% 30px 6%;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-gray);
-            font-size: 0.95rem;
         }
-        footer p span {
+        .footer-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .footer-logo {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .footer-logo span {
             color: var(--primary-color);
-            font-weight: bold;
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-links a {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 0.9rem;
+            color: #666666;
         }
 
-        /* ==========================================
-           RESPONSIVIDADE (MOBILE & TABLET)
-           ========================================== */
-        @media (max-width: 992px) {
-            header { padding: 20px 5%; }
-            nav, .btn-nav { display: none; } /* Oculta menu tradicional em mobile */
-            .hero { padding: 0 5%; }
-            .hero h1 { font-size: 3.5rem; }
-            .features { padding: 0 5% 40px 5%; margin-top: -40px; }
-            .classes-section { padding: 80px 5%; }
-            .section-title h2 { font-size: 2.8rem; }
+        /* ==========================================================================
+           RESPONSIVIDADE (Ajustes de Tela Mobile/Tablet)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero-section h1 { font-size: 4rem; }
+            header { padding: 20px 4%; }
+            nav, .header-action { display: none; } /* Esconde o menu para criar sanduíche se necessário */
         }
-        @media (max-width: 576px) {
-            .hero h1 { font-size: 2.8rem; }
-            .cta-buttons { flex-direction: column; }
-            .btn-main, .btn-secondary { text-align: center; }
-            .classes-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 3rem; }
+            .hero-buttons { flex-direction: column; }
+            .features-container { margin-top: -40px; }
+            .center-title h2 { font-size: 2.8rem; }
+            .footer-wrap { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -326,90 +353,101 @@
         <div class="logo">BOX<span>EN</span></div>
         <nav>
             <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre Nós</a></li>
-                <li><a href="#">Aulas</a></li>
-                <li><a href="#">Treinadores</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Classes</a></li>
+                <li><a href="#">Trainers</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <a href="#" class="btn-bold btn-nav">Aderir Já</a>
+        <div class="header-action">
+            <a href="#" class="btn-style btn-join">JOIN NOW</a>
+        </div>
     </header>
 
-    <section class="hero">
+    <section class="hero-section">
         <div class="hero-content">
-            <span class="hero-subtitle">FORJA O TEU CORPO</span>
-            <h1>Treina como um Campeão</h1>
-            <p>Descobre o verdadeiro poder dentro de ti. A nossa escola de boxe e artes marciais oferece treino de alta performance para todos os níveis, desde iniciantes a atletas profissionais com instalações de topo.</p>
-            <div class="cta-buttons">
-                <a href="#" class="btn-bold btn-main">Começar Agora</a>
-                <a href="#" class="btn-bold btn-secondary">Ver Horários</a>
+            <span class="hero-tagline">SHAPE YOUR BODY</span>
+            <h1>TRAIN LIKE A CHAMPION</h1>
+            <p>Unleash your inner strength. Our boxing and martial arts academy provides elite level training for fitness enthusiasts and competitive athletes alike with premium equipment.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-style btn-prime">GET STARTED NOW</a>
+                <a href="#" class="btn-style btn-outline">VIEW SCHEDULE</a>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <div class="feature-icon">🥊</div>
-            <h3>Treino Profissional</h3>
-            <p>Programas desenhados por instrutores certificados para maximizar a tua técnica, força e agilidade.</p>
+    <section class="features-container">
+        <div class="feature-box">
+            <span class="icon">🥊</span>
+            <h3>EXPERT COACHING</h3>
+            <p>Our certified personal trainers develop custom programs based around your exact skill level, power and mobility targets.</p>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">🏋️‍♂️</div>
-            <h3>Ginásio Completo</h3>
-            <p>Acesso a equipamentos modernos, sacos de pancada de alta qualidade e ringues de tamanho oficial.</p>
+        <div class="feature-box">
+            <span class="icon">🏋️‍♂️</span>
+            <h3>ELITE EQUIPMENT</h3>
+            <p>Gain access to heavy bags, state-of-the-art strength training machinery, and full-size competition boxing rings.</p>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">⏱️</div>
-            <h3>Horários Flexíveis</h3>
-            <p>Aulas dinâmicas disponíveis de manhã cedo até à noite para se adaptarem perfeitamente à tua rotina.</p>
+        <div class="feature-box">
+            <span class="icon">⏱️</span>
+            <h3>FLEXIBLE HOURS</h3>
+            <p>Dynamic class groups scheduled throughout early mornings to late nights to easily adjust into your professional routine.</p>
         </div>
     </section>
 
-    <section class="classes-section">
-        <div class="section-title">
-            <span>OS NOSSOS PROGRAMAS</span>
-            <h2>Escolhe a tua Modalidade</h2>
+    <section class="section-padding">
+        <div class="center-title">
+            <span class="sub">OUR TRAINING COURSES</span>
+            <h2>CHOOSE YOUR STYLE</h2>
         </div>
 
-        <div class="classes-grid">
-            <div class="class-item">
-                <div class="class-img-container">
-                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600" alt="Boxe Clássico" class="class-img">
+        <div class="classes-layout">
+            <div class="class-card">
+                <div class="class-media">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600" alt="Classic Boxing">
                 </div>
-                <div class="class-body">
-                    <h3>Boxe Clássico</h3>
-                    <p>Aprende os fundamentos do boxe tradicional: movimentação de pés, esquivas eficazes e combinações de golpes potentes.</p>
-                    <a href="#" class="class-link">Saber Mais &rarr;</a>
-                </div>
-            </div>
-
-            <div class="class-item">
-                <div class="class-img-container">
-                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=600" alt="Kickboxing" class="class-img">
-                </div>
-                <div class="class-body">
-                    <h3>Kickboxing</h3>
-                    <p>Combina técnicas de punho do boxe com pontapés dinâmicos num treino intenso focado em queima calórica e definição.</p>
-                    <a href="#" class="class-link">Saber Mais &rarr;</a>
+                <div class="class-info">
+                    <h3>CLASSIC BOXING</h3>
+                    <p>Master foundational boxing styles: structured footwork pacing, precision defensive slips, and rapid core punch combinations.</p>
+                    <a href="#" class="class-btn">READ MORE &rarr;</a>
                 </div>
             </div>
 
-            <div class="class-item">
-                <div class="class-img-container">
-                    <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=600" alt="Artes Marciais Mistas" class="class-img">
+            <div class="class-card">
+                <div class="class-media">
+                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=600" alt="Kickboxing">
                 </div>
-                <div class="class-body">
-                    <h3>Artes Marciais Mistas</h3>
-                    <p>O derradeiro sistema de combate moderno, integrando técnicas de striking, grappling, submissões e jiu-jitsu.</p>
-                    <a href="#" class="class-link">Saber Mais &rarr;</a>
+                <div class="class-info">
+                    <h3>KICKBOXING FIT</h3>
+                    <p>Fuses explosive traditional boxing hand strikes with fast target kicks engineered for high-intensity fat burning.</p>
+                    <a href="#" class="class-btn">READ MORE &rarr;</a>
+                </div>
+            </div>
+
+            <div class="class-card">
+                <div class="class-media">
+                    <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=600" alt="Mixed Martial Arts">
+                </div>
+                <div class="class-info">
+                    <h3>MIXED MARTIAL ARTS</h3>
+                    <p>The ultimate strategic combat framework, combining rigorous stand-up striking variants with ground grappling controls.</p>
+                    <a href="#" class="class-btn">READ MORE &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 <span>BOXEN</span>. Todos os direitos reservados. Inspirado na identidade visual AskProject.</p>
+        <div class="footer-wrap">
+            <div class="footer-logo">BOX<span>EN</span></div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Services</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 BOXEN. All rights reserved. Otimizado a partir do Template Kit oficial.
+        </div>
     </footer>
 
 </body>
