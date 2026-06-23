@@ -1,6 +1,6 @@
 /**
  * Registry of page sections — single source of truth for order and metadata.
- * Used by assemble.ts and the split script (scripts/split-boxen-content.mjs).
+ * Kept for the legacy modular Boxen content fragments.
  */
 export const BOXEN_SECTIONS = [
   {

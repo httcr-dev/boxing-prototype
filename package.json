@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "content:split": "node scripts/split-boxen-content.mjs"
+    "content:extract": "node scripts/extract-assets.mjs"
   },
   "dependencies": {
     "astro": "^6.4.7"

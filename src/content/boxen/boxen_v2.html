@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TERTOCT - Centro de Treinamento de Boxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#000;
+  --panel:#20201f;
+  --panel2:#171717;
+  --cream:#d6cdc7;
+  --gold:#f0d49a;
+  --gold2:#f3d68f;
+  --red:#ff442d;
+  --muted:#8f9298;
+  --green:#00dc38;
+  --white:#fff;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:"Roboto Condensed",Arial,sans-serif;
+  overflow-x:hidden;
+  min-width:320px;
+}
+img,svg{max-width:100%}
+.page{
+  width:100%;
+  min-height:100vh;
+  overflow:hidden;
+  background:var(--black);
+}
+.nav{
+  min-height:74px;
+  display:grid;
+  grid-template-columns:minmax(210px,300px) minmax(0,1fr) auto;
+  align-items:center;
+  padding:0 clamp(18px,7vw,130px);
+  gap:clamp(14px,3vw,42px);
+  background:#030303;
+}
+.brand img{
+  display:block;
+  width:clamp(190px,15vw,270px);
+  max-width:100%;
+  height:auto;
+  mix-blend-mode:screen;
+}
+.menu{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:#f2f2f2;
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(13px,1vw,16px);
+  font-weight:500;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.menu a{color:inherit;text-decoration:none}
+.menu span{color:#d7d7d7}
+.nav-icons{display:flex;justify-content:flex-end;gap:9px}
+.nav-icons a{
+  width:31px;
+  height:31px;
+  border:2px solid #d7d7d7;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+}
+.nav-icons svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2}
+.hero{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(420px,1.08fr) minmax(320px,.92fr);
+  align-items:start;
+  min-height:clamp(450px,40vw,620px);
+  padding:clamp(44px,5vw,76px) clamp(18px,7vw,126px) 0;
+  background:#000;
+}
+.hero-copy{text-align:center;padding-top:0;z-index:2}
+.eyebrow{
+  color:#9e9fa2;
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(20px,1.8vw,30px);
+  font-weight:300;
+  letter-spacing:2px;
+  margin-bottom:25px;
+  text-transform:uppercase;
+}
+.hero h1{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(39px,3.55vw,66px);
+  line-height:1.09;
+  font-weight:400;
+  letter-spacing:0;
+  text-transform:uppercase;
+}
+.hero h1 .gold{color:var(--gold)}
+.hero-action{
+  margin:clamp(20px,2vw,30px) auto 0;
+  width:clamp(430px,35vw,560px);
+  max-width:100%;
+  min-height:63px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  background:rgba(255,255,255,.09);
+}
+.avatars{display:flex;align-items:center}
+.avatar{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  margin-left:-7px;
+  border:1px solid rgba(255,255,255,.75);
+  background:linear-gradient(135deg,#f6c29f,#26322f);
+}
+.avatar:first-child{margin-left:0}
+.join{
+  width:92px;
+  flex:0 0 auto;
+  color:#fff;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.25;
+  text-align:left;
+}
+.whats{
+  min-width:0;
+  height:44px;
+  border-radius:24px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:0 19px 0 9px;
+  color:#fff;
+  background:var(--green);
+  box-shadow:0 0 11px rgba(0,220,56,.72);
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:.4px;
+  text-decoration:none;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.whats svg{width:31px;height:31px;fill:#fff}
+.seal{
+  width:min(100%,clamp(390px,34vw,560px));
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+  justify-self:end;
+  margin-top:-8px;
+  filter:drop-shadow(0 0 26px rgba(216,151,64,.33));
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  min-height:clamp(118px,10vw,150px);
+  padding:0 clamp(18px,7vw,120px);
+  background:#000;
+}
+.stat{
+  display:grid;
+  grid-template-columns:auto 20px 1fr;
+  align-items:center;
+  column-gap:7px;
+}
+.num{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(50px,4.5vw,76px);
+  font-weight:700;
+  letter-spacing:-2px;
+}
+.plus{
+  align-self:start;
+  margin-top:23px;
+  color:#f5ba6e;
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:25px;
+  font-weight:700;
+}
+.stat p{
+  color:#a2a6aa;
+  font-size:clamp(16px,1.3vw,22px);
+  line-height:1.42;
+}
+.about{
+  display:grid;
+  grid-template-columns:minmax(330px,480px) minmax(0,1fr);
+  align-items:center;
+  gap:clamp(42px,8vw,110px);
+  padding:clamp(76px,8vw,124px) clamp(24px,8vw,140px) clamp(60px,7vw,104px);
+  background:#000;
+}
+.about-art{
+  position:relative;
+  min-height:clamp(520px,44vw,680px);
+}
+.about-art::before,.about-art::after{
+  content:"";
+  position:absolute;
+  width:34%;
+  height:25%;
+  background:linear-gradient(#f1d99b,#d9b970);
+}
+.about-art::before{left:2px;top:0}
+.about-art::after{right:0;bottom:20px}
+.about-art img{
+  position:absolute;
+  left:0;
+  top:15%;
+  width:86%;
+  height:68%;
+  object-fit:cover;
+  border:4px solid #f0dca8;
+  border-radius:3px;
+  z-index:2;
+}
+.about-copy{padding-top:0}
+.section-kicker{
+  color:var(--gold);
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(29px,2.4vw,42px);
+  font-weight:500;
+  line-height:1;
+  text-transform:uppercase;
+  margin-bottom:17px;
+}
+.about h2{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(30px,2.8vw,48px);
+  line-height:1.32;
+  letter-spacing:1.5px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.about-desc{
+  width:min(100%,520px);
+  max-width:100%;
+  margin:24px 0 35px;
+  color:#858991;
+  font-size:clamp(15px,1.05vw,18px);
+  line-height:1.5;
+}
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:27px 41px;
+}
+.feature{
+  display:grid;
+  grid-template-columns:21px 1fr;
+  column-gap:9px;
+}
+.check{
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin-top:3px;
+  color:#111;
+  background:var(--gold);
+  font-family:Arial,sans-serif;
+  font-size:15px;
+  font-weight:900;
+}
+.feature h3{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(20px,1.55vw,27px);
+  line-height:1.15;
+  margin-bottom:18px;
+}
+.feature p{
+  color:#858991;
+  font-size:clamp(15px,1.05vw,18px);
+  line-height:1.45;
+}
+.about .whats{
+  margin:30px 0 0 43px;
+  height:55px;
+  border-radius:30px;
+  padding-right:26px;
+  font-size:21px;
+}
+.about .whats svg{width:40px;height:40px}
+.marquee{
+  height:clamp(54px,4.8vw,72px);
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:#f3d697;
+  color:#000;
+}
+.marquee-track{
+  display:flex;
+  gap:18px;
+  min-width:max-content;
+  animation:marquee 24s linear infinite;
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(34px,3.1vw,52px);
+  font-weight:700;
+  letter-spacing:.2px;
+  text-transform:uppercase;
+}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.services{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;
+  padding:1px;
+  background:#151515;
+}
+.service{
+  position:relative;
+  min-height:clamp(320px,34vw,520px);
+  display:grid;
+  align-items:end;
+  text-align:center;
+  isolation:isolate;
+  overflow:hidden;
+}
+.service::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.78) 78%,rgba(0,0,0,.92)),
+    var(--service-img);
+  background-position:center;
+  background-size:cover;
+  filter:grayscale(1) contrast(1.08);
+  transition:transform .45s ease,filter .45s ease;
+}
+.service::after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(240,212,154,.18);
+  opacity:.8;
+  pointer-events:none;
+}
+.service:hover::before{
+  transform:scale(1.04);
+  filter:grayscale(.72) contrast(1.08);
+}
+.svc-icon{
+  width:56px;
+  height:56px;
+  margin:0 auto 18px;
+  color:#f3d59a;
+}
+.svc-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.8}
+.service-content{
+  padding:clamp(28px,4vw,56px) clamp(18px,2vw,32px);
+}
+.service h3{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(26px,2.4vw,40px);
+  line-height:1.05;
+  margin-bottom:12px;
+  text-transform:uppercase;
+  text-shadow:0 3px 16px rgba(0,0,0,.65);
+}
+.service p{
+  width:min(100%,240px);
+  margin:0 auto;
+  color:#d4d6da;
+  font-size:clamp(15px,1.05vw,18px);
+  line-height:1.45;
+}
+.plans{
+  padding:clamp(22px,3vw,42px) 0 clamp(48px,5vw,76px);
+  background:#d8d0ca;
+  color:#050505;
+  text-align:center;
+}
+.plans h2{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(44px,4vw,66px);
+  line-height:1;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.plans-sub{
+  margin-top:7px;
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(22px,2vw,34px);
+  line-height:1.18;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.plan-grid{
+  width:min(1040px,calc(100% - 44px));
+  margin:clamp(20px,2.5vw,34px) auto 0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.plan-card{
+  min-height:clamp(322px,25vw,410px);
+  padding:clamp(32px,3vw,48px) clamp(34px,3.5vw,58px);
+  background:#20211f;
+  border:1px solid #ed563d;
+  color:#fff;
+  text-align:left;
+}
+.plan-card h3{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(18px,1.45vw,25px);
+  font-weight:500;
+  text-align:center;
+  text-transform:uppercase;
+  margin-bottom:11px;
+}
+.price{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  gap:6px;
+  color:var(--red);
+  font-family:"Oswald",Arial,sans-serif;
+  font-style:italic;
+  margin-bottom:16px;
+}
+.price .currency{font-size:17px;margin-top:10px}
+.price .amount{font-size:clamp(33px,3vw,50px);line-height:1}
+.price .period{
+  color:#fff;
+  font-size:10px;
+  font-style:normal;
+  margin-top:15px;
+  text-transform:uppercase;
+}
+.plan-card ul{list-style:none;margin:0 auto 30px;width:112px}
+.plan-card li{
+  position:relative;
+  padding-left:20px;
+  margin-bottom:12px;
+  color:#e9e9e9;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  font-weight:700;
+}
+.plan-card li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  top:-2px;
+  color:var(--red);
+  font-size:18px;
+}
+.plan-card a{
+  display:block;
+  width:106px;
+  height:33px;
+  margin:0 auto;
+  background:var(--red);
+  color:#fff;
+  text-decoration:none;
+  text-align:center;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  font-weight:800;
+  line-height:33px;
+  text-transform:uppercase;
+}
+.location{
+  padding:clamp(34px,5vw,66px) 0 clamp(78px,8vw,128px);
+  background:#000;
+  text-align:center;
+}
+.location h2{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(52px,5vw,82px);
+  line-height:1;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.location p{
+  margin:13px 0 29px;
+  color:#f5f5f5;
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:clamp(34px,4vw,64px);
+  font-weight:300;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+.map-frame{
+  display:block;
+  width:min(980px,calc(100% - 32px));
+  min-height:320px;
+  aspect-ratio:724 / 382;
+  margin:0 auto;
+  border:0;
+  filter:saturate(.8) contrast(1.05);
+}
+.map{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:inherit;
+  object-fit:cover;
+  border:0;
+}
+.footer{
+  min-height:220px;
+  display:grid;
+  grid-template-columns:230px 1fr 1fr 1fr;
+  gap:clamp(28px,5vw,64px);
+  padding:47px clamp(42px,10vw,140px) 36px;
+  background:#222220;
+}
+.foot-brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:17px;
+}
+.glove{
+  width:25px;
+  height:25px;
+  color:var(--red);
+}
+.foot-brand span{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:25px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.footer p,.footer li,.footer a{
+  color:#d1d1d1;
+  font-family:Arial,sans-serif;
+  font-size:9px;
+  line-height:1.7;
+  text-decoration:none;
+}
+.socials{display:flex;gap:8px;margin-top:18px}
+.socials a{
+  width:17px;
+  height:17px;
+  display:grid;
+  place-items:center;
+  border:1px solid #7b7b7b;
+  color:#fff;
+  font-size:8px;
+}
+.footer h3{
+  color:#fff;
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:14px;
+  font-style:italic;
+  font-weight:500;
+  text-transform:uppercase;
+  margin-bottom:17px;
+}
+.footer ul{list-style:none}
+.contact li{margin-bottom:7px}
+.contact b{color:var(--red);font-size:12px;margin-right:7px}
+@media (max-width:920px){
+  .nav{
+    grid-template-columns:minmax(160px,220px) 1fr auto;
+    padding:0 24px;
+    gap:14px;
+  }
+  .brand img{width:210px}
+  .menu{gap:7px;font-size:13px}
+  .hero{
+    grid-template-columns:minmax(0,1fr) minmax(250px,330px);
+    padding:42px 24px 0;
+  }
+  .hero h1{font-size:40px}
+  .seal{width:330px;height:auto;align-self:end}
+  .stats{padding:12px 18px;gap:12px}
+  .stat{grid-template-columns:auto 16px minmax(0,1fr)}
+  .num{font-size:46px}
+  .plus{font-size:22px;margin-top:18px}
+  .stat p{font-size:16px}
+  .about{
+    grid-template-columns:minmax(280px,360px) minmax(0,1fr);
+    gap:30px;
+    padding:76px 32px 58px;
+  }
+  .about-art{min-height:560px}
+  .about-art img{width:100%;height:410px}
+  .about .whats{margin-left:0}
+  .service{height:270px}
+  .plan-card{padding:30px 28px}
+  .footer{
+    grid-template-columns:1.35fr 1fr 1fr;
+    padding:42px 42px 34px;
+    gap:28px;
+  }
+}
+@media (max-width:760px){
+  .nav{height:auto;grid-template-columns:1fr;padding:18px 22px;text-align:center}
+  .brand img{margin:auto}
+  .menu{flex-wrap:wrap;font-size:13px;white-space:normal}
+  .menu span{display:none}
+  .nav-icons{justify-content:center}
+  .hero,.about{grid-template-columns:1fr;padding:42px 22px}
+  .hero{min-height:auto}
+  .eyebrow{font-size:22px;margin-bottom:18px}
+  .hero h1{font-size:36px}
+  .hero-action{width:100%;height:auto;padding:10px;flex-wrap:wrap}
+  .seal{width:min(85vw,394px);height:auto;margin:24px auto 0}
+  .stats{grid-template-columns:1fr 1fr;padding:20px;gap:18px}
+  .stat{justify-content:center}
+  .about-art{min-height:auto;aspect-ratio:1 / 1.25;max-width:430px;width:100%;margin:0 auto}
+  .about-art::before,.about-art::after{width:34%;height:28%}
+  .about-art::after{bottom:0}
+  .about-art img{top:15%;width:96%;height:72%;left:0}
+  .about-desc{width:auto}
+  .features{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .service{min-height:330px}
+  .plan-grid{width:auto;margin:22px 22px 0;grid-template-columns:1fr}
+  .plan-card{text-align:center}
+  .location p{font-size:31px}
+  .map-frame{width:calc(100% - 32px);min-height:240px}
+  .footer{grid-template-columns:1fr 1fr;padding:36px 28px}
+}
+@media (max-width:520px){
+  .nav{padding:16px}
+  .brand img{width:200px}
+  .hero{padding:34px 16px 0}
+  .eyebrow{font-size:18px;letter-spacing:1px}
+  .hero h1{font-size:31px;line-height:1.14}
+  .hero-action{gap:10px;justify-content:center}
+  .whats{width:100%;justify-content:center;padding:0 12px;font-size:15px}
+  .stats{grid-template-columns:1fr;gap:10px;padding:18px 24px}
+  .stat{justify-content:start}
+  .about{padding:36px 16px}
+  .section-kicker{font-size:27px}
+  .about h2{font-size:26px}
+  .about .whats{height:50px;font-size:17px}
+  .about .whats svg{width:34px;height:34px}
+  .marquee{height:46px}
+  .marquee-track{font-size:27px}
+  .services{grid-template-columns:1fr}
+  .service{min-height:310px}
+  .plans{padding:28px 0 40px}
+  .plans h2{font-size:36px}
+  .plans-sub{font-size:20px}
+  .plan-grid{max-width:none;margin:20px 16px 0}
+  .plan-card{min-height:auto;padding:28px 22px}
+  .location{padding:34px 0 56px}
+  .location h2{font-size:40px}
+  .location p{font-size:24px;letter-spacing:1px;padding:0 16px}
+  .footer{grid-template-columns:1fr;padding:34px 22px}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <nav class="nav">
+    <a class="brand" href="#"><img src="assets/boxen_v2/brand.png" alt="TERTOCT"></a>
+    <div class="menu">
+      <a href="#localizacao">Localização</a><span>|</span>
+      <a href="#sobre">Sobre Nós</a><span>|</span>
+      <a href="#servicos">Serviços</a><span>|</span>
+      <a href="#servicos">Serviços</a><span>|</span>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="nav-icons" aria-label="Links de contato">
+      <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M8.5 8.9c.2-.5.3-.8.7-.8h.7c.2 0 .4.1.5.4l.7 1.6c.1.3.1.5-.1.7l-.5.6c.7 1.3 1.8 2.3 3.1 2.9l.6-.7c.2-.2.4-.3.7-.1l1.6.7c.3.1.4.3.4.6v.7c0 .4-.2.6-.6.8-1 .4-2.6.2-4.1-.7-1.8-1-3.3-2.5-4.2-4.3-.8-1.4-1-3-.5-4.1Z"/><path d="M5.2 19.2 6.3 16A7.8 7.8 0 1 1 9 18.6l-3.8.6Z"/></svg></a>
+      <a href="#localizacao" aria-label="Localização"><svg viewBox="0 0 24 24"><path d="M12 21s6-5.1 6-11a6 6 0 0 0-12 0c0 5.9 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg></a>
+      <a href="#contato" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="1.5"/><path d="m5 7 7 6 7-6"/></svg></a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Bem - Vindo (a)</div>
+      <h1>Centro de Treinamento<br>de <span class="gold">Boxe</span> Focado em<br>Saúde, Performance e<br>Alto Desempenho</h1>
+      <div class="hero-action">
+        <div class="avatars" aria-hidden="true">
+          <span class="avatar"></span><span class="avatar"></span><span class="avatar"></span><span class="avatar"></span><span class="avatar"></span>
+        </div>
+        <div class="join">Junte-se a mais de<br>900+ Alunos</div>
+        <a class="whats" href="https://wa.me/" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 32 32"><path d="M16 3A12.8 12.8 0 0 0 5 22.3L3.8 28l5.8-1.3A12.8 12.8 0 1 0 16 3Zm0 2.5A10.3 10.3 0 0 1 26.3 16 10.3 10.3 0 0 1 10 24.4l-.5-.3-2.4.6.5-2.4-.3-.5A10.3 10.3 0 0 1 16 5.5Zm-4.1 5.2c-.2 0-.5 0-.8.4-.3.3-1.1 1-1.1 2.5s1.1 3 1.2 3.2c.2.2 2.2 3.4 5.4 4.6 2.6 1 3.2.8 3.8.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.7-.4l-2.1-1c-.3-.1-.6-.1-.8.2l-.9 1.1c-.2.2-.4.3-.8.1-.4-.2-1.5-.6-2.8-1.8-1-1-1.7-2.1-1.9-2.4-.2-.4 0-.5.1-.7l.6-.7c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7l-1-2.2c-.2-.6-.5-.6-.8-.6Z"/></svg>
+          Envie uma mensagem
+        </a>
+      </div>
+    </div>
+    <img class="seal" src="assets/boxen_v2/hero-seal.png" alt="Tiago Terto Boxing Academy">
+  </section>
+
+  <section class="stats" aria-label="Números da academia">
+    <div class="stat"><strong class="num">15</strong><span class="plus">+</span><p>Anos de<br>experiência</p></div>
+    <div class="stat"><strong class="num">480</strong><span class="plus">+</span><p>Total de<br>membros</p></div>
+    <div class="stat"><strong class="num">30</strong><span class="plus">+</span><p>Treinador<br>Profissional</p></div>
+    <div class="stat"><strong class="num">360</strong><span class="plus">+</span><p>Histórias de<br>sucesso</p></div>
+  </section>
+
+  <section class="about" id="sobre">
+    <div class="about-art">
+      <img src="assets/boxen_v2/about-boxer.png" alt="Aluno treinando boxe">
+    </div>
+    <div class="about-copy">
+      <div class="section-kicker">Sobre Nós:</div>
+      <h2>A Melhor Escola de<br>Boxe e Artes Marciais<br>Desde 2006.</h2>
+      <p class="about-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidente ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</p>
+      <div class="features">
+        <article class="feature"><span class="check">✓</span><div><h3>Melhor<br>Treinamento</h3><p>Lorem ipsum dolor sit amet contras adipiscing elit sed domo</p></div></article>
+        <article class="feature"><span class="check">✓</span><div><h3>Melhores preços</h3><p>Lorem ipsum dolor sit amet contras adipiscing elit sed domo</p></div></article>
+        <article class="feature"><span class="check">✓</span><div><h3>Equipamentos de<br>qualidade</h3><p>Lorem ipsum dolor sit amet contras adipiscing elit sed domo</p></div></article>
+        <article class="feature"><span class="check">✓</span><div><h3>Melhores tênis</h3><p>Lorem ipsum dolor sit amet contras adipiscing elit sed domo</p></div></article>
+      </div>
+      <a class="whats" href="https://wa.me/" target="_blank" rel="noreferrer">
+        <svg viewBox="0 0 32 32"><path d="M16 3A12.8 12.8 0 0 0 5 22.3L3.8 28l5.8-1.3A12.8 12.8 0 1 0 16 3Zm0 2.5A10.3 10.3 0 0 1 26.3 16 10.3 10.3 0 0 1 10 24.4l-.5-.3-2.4.6.5-2.4-.3-.5A10.3 10.3 0 0 1 16 5.5Zm-4.1 5.2c-.2 0-.5 0-.8.4-.3.3-1.1 1-1.1 2.5s1.1 3 1.2 3.2c.2.2 2.2 3.4 5.4 4.6 2.6 1 3.2.8 3.8.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.7-.4l-2.1-1c-.3-.1-.6-.1-.8.2l-.9 1.1c-.2.2-.4.3-.8.1-.4-.2-1.5-.6-2.8-1.8-1-1-1.7-2.1-1.9-2.4-.2-.4 0-.5.1-.7l.6-.7c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7l-1-2.2c-.2-.6-.5-.6-.8-.6Z"/></svg>
+        Envie uma mensagem
+      </a>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>TERTOCT • TERTOCT • TERTOCT • TERTOCT • TERTOCT • TERTOCT •&nbsp;</span>
+      <span>TERTOCT • TERTOCT • TERTOCT • TERTOCT • TERTOCT • TERTOCT •&nbsp;</span>
+    </div>
+  </div>
+
+  <section class="services" id="servicos">
+    <article class="service" style="--service-img:url('/boxing-prototype/images/bg-10.jpg')">
+      <div class="service-content">
+        <div class="svc-icon"><svg viewBox="0 0 64 64"><path d="M23 9h18M20 16h24M27 16v32M37 16v32M22 48h20M15 23h34M18 29h28"/></svg></div>
+        <h3>Turma de<br>Atletas</h3>
+        <p>Treinos intensos para condicionamento, técnica e evolução dentro do ringue.</p>
+      </div>
+    </article>
+    <article class="service" style="--service-img:url('/boxing-prototype/images/bg-17.jpg')">
+      <div class="service-content">
+        <div class="svc-icon"><svg viewBox="0 0 64 64"><path d="M18 44c5-18 11-27 23-29 6-1 10 3 10 9 0 8-7 15-17 15H22M36 22c5 2 8 6 8 12"/></svg></div>
+        <h3>Boxe para<br>Iniciantes</h3>
+        <p>Base, postura, movimentação e golpes com acompanhamento próximo.</p>
+      </div>
+    </article>
+    <article class="service" style="--service-img:url('/boxing-prototype/images/03-fighting-spirit-02.jpg')">
+      <div class="service-content">
+        <div class="svc-icon"><svg viewBox="0 0 64 64"><path d="M14 45h8M42 45h8M22 37v16M42 37v16M22 45h20M28 20h8M32 20v17M18 20c0-5 4-9 9-9h10c5 0 9 4 9 9"/></svg></div>
+        <h3>Personal<br>Training</h3>
+        <p>Plano individual para performance, força, emagrecimento e alto desempenho.</p>
+      </div>
+    </article>
+    <article class="service" style="--service-img:url('/boxing-prototype/images/bg-14.jpg')">
+      <div class="service-content">
+        <div class="svc-icon"><svg viewBox="0 0 64 64"><path d="M32 8c10 9 15 16 15 26 0 9-7 17-15 17s-15-8-15-17C17 24 22 17 32 8Z"/><path d="M32 18v33M23 35h18"/></svg></div>
+        <h3>Kickboxing</h3>
+        <p>Combina golpes, chutes e preparo físico em aulas dinâmicas e fortes.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="plans">
+    <h2>Nossos Planos:</h2>
+    <div class="plans-sub">Para planos personalizados<br>Chamar nossa equipe no whatsapp</div>
+    <div class="plan-grid">
+      <article class="plan-card">
+        <h3>Basic Training</h3>
+        <div class="price"><span class="currency">$</span><span class="amount">250</span><span class="period">/ Month</span></div>
+        <ul><li>Basic Training</li><li>2 Hours Training</li><li>Pro Trainer</li><li>Free Drinks</li><li>Free Towel</li></ul>
+        <a href="#">Get Started</a>
+      </article>
+      <article class="plan-card">
+        <h3>Basic Training</h3>
+        <div class="price"><span class="currency">$</span><span class="amount">250</span><span class="period">/ Month</span></div>
+        <ul><li>Basic Training</li><li>2 Hours Training</li><li>Pro Trainer</li><li>Free Drinks</li><li>Free Towel</li></ul>
+        <a href="#">Get Started</a>
+      </article>
+      <article class="plan-card">
+        <h3>Basic Training</h3>
+        <div class="price"><span class="currency">$</span><span class="amount">250</span><span class="period">/ Month</span></div>
+        <ul><li>Basic Training</li><li>2 Hours Training</li><li>Pro Trainer</li><li>Free Drinks</li><li>Free Towel</li></ul>
+        <a href="#">Get Started</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="location" id="localizacao">
+    <h2>Localização</h2>
+    <p>AV Mauá, 959 - Maringá</p>
+    <div class="map-frame">
+      <iframe
+        class="map"
+        title="Mapa da localização na Avenida Mauá, 959 em Maringá"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Av.%20Mau%C3%A1%2C%20959%20-%20Maring%C3%A1%2C%20PR&output=embed">
+      </iframe>
+    </div>
+  </section>
+
+  <footer class="footer" id="contato">
+    <div>
+      <div class="foot-brand">
+        <svg class="glove" viewBox="0 0 32 32"><path fill="currentColor" d="M14 3c3 0 5 2 5 5v3h2c4 0 7 3 7 7v1c0 5-4 9-9 9H9c-3 0-5-2-5-5v-7c0-2 1-4 3-5V8c0-3 2-5 5-5h2Zm-1 7V6h-1c-1 0-2 1-2 2v5H8c-1 1-1 2-1 3v7c0 1 1 2 2 2h10c3 0 6-3 6-6v-1c0-2-2-4-4-4h-5V8c0-1-1-2-2-2h-1v4Z"/></svg>
+        <span>Boxen</span>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nullam in nibh.</p>
+      <div class="socials"><a href="#">f</a><a href="#">t</a><a href="#">▶</a><a href="#">in</a></div>
+    </div>
+    <div>
+      <h3>Get in Touch</h3>
+      <ul class="contact">
+        <li><b>●</b>457 Morningview Lane NY</li>
+        <li><b>✉</b>example@gmail.com</li>
+        <li><b>☎</b>+1 (234) 567 890</li>
+        <li><b>▣</b>+0 (987) 654 321</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Quicklinks</h3>
+      <ul><li><a href="#">HOME</a></li><li><a href="#">ABOUT</a></li><li><a href="#">FAQS</a></li><li><a href="#">BLOG</a></li><li><a href="#">CONTACT</a></li></ul>
+    </div>
+    <div>
+      <h3>Open Hours</h3>
+      <p><strong>Monday - Friday</strong><br>07.00 - 20.00</p>
+      <br>
+      <p><strong>Satutay - Sunday</strong><br>06.00 - 18.00</p>
+    </div>
+  </footer>
+</main>
+</body>
+</html>
